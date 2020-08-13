@@ -155,20 +155,153 @@ function spedChange() {
 // watch();
 
 // Функция возвращения - return
-function watch(message) {
+function name10(message) {
   return message + " - Vasiliy";
   // console.log(test); - после "return" нельзя делать записи - код становиться недоступен
 }
-let message = watch("Hello");
+let message = name10("Hello");
 console.log(message);
 
-// Анонимные функции
-let anonym = function () {
-  console.log("we are anonymus");
+// Анонимные функции - не имеют идентификатора "no name"
+let name11 = function () {
+  console.log("Анонимная функция");
 };
-anonym();
+name11();
 
 // Краткая запись анонисной ф-и
 (function () {
-  console.log("we are anonymus");
+  console.log("Краткая анонимная функция");
 })();
+
+// Стрелочная функция
+let name12 = () => console.log("Стрелочная функция");
+name12();
+
+// Краткая запись Функция возвращения - return
+let name13 = () => {
+  return "Краткая запись Функция возвращения";
+};
+console.log(name13());
+
+let name14 = () => "Краткая запись Функция возвращения";
+console.log(name14());
+
+let name15 = (message1) => {
+  return message1 + 2;
+};
+console.log(name15("Еще один вариант записи стрелочной, краткой ф-и - "));
+
+// МЕТОДЫ
+// - сслка на функцию;
+// - закреплен за обьектом;
+// - вызывается через свойство обьекта
+
+// функция
+function getMassege() {
+  console.log("Я функция");
+}
+getMassege();
+
+// метод
+let car11 = {
+  getMassege: function () {
+    console.log("Я метод");
+  },
+};
+car11.getMassege();
+
+// Пример - находиться в обьекте:
+let car12 = {
+  color: "red",
+  open: function () {
+    console.log("Открыто");
+  },
+};
+car12.open();
+
+// Пример - метод с параметром
+let car13 = {
+  color: "red",
+  open: function (message) {
+    console.log(message);
+  },
+};
+car13.open("Закрыто");
+
+// В ES6: можно убрать ": function "
+let car14 = {
+  color: "red",
+  open(message) {
+    console.log(message);
+  },
+};
+car14.open("Метод - краткая запись в ES6");
+
+// МАСИВЫ - Счет елементов начинается с "0"
+[1, 8, 15, 24];
+[1, "восемь", 15, "двадцать четыре"];
+
+// Виведим второй елемент масива - 15
+let array = [1, "восемь", 15, "двадцать четыре"];
+console.log(
+  "Счет елементов масива начинается с 0. Виведим первый и второй елемент масива - [1, 8, 15, 24] - " +
+    array[1] +
+    array[2]
+);
+//  оператор инкремента "i++"" = "i + 1"
+// а - унарный оператор
+// а+b - бинарный оператор
+//  "++i" - префексный оператор (выполняется до тела цикла)
+//  "i++" - посфексный оператор (выполняется после тела цикла - увеличивает число после того как возвращает значение)
+//  "--i" - инкремент
+//  "i--" - дикримени
+// (применяються к имени переменной)
+for (let i = 1; i <= 10; ++i) {
+  console.log("Повторение і через цикл -" + i);
+}
+
+let drivers = ["Иван", "Сергей", "Руслан", "Виталик"];
+console.log(drivers[0]);
+console.log(drivers[1]);
+
+console.log(drivers.length); // - узнать количество елементов в масиве
+console.log(drivers);
+
+// Выводим количесто елементов масива
+for (let i = 0; i < drivers.length; i++) {
+  console.log(drivers[i]);
+}
+// 1) присваиваем переменную - "let i" равную "= 0"
+// 2) цикл проверяет если "i < drivers.length;" тогда i++ - добавляет значение на одиницу, теперь "i = 1;"
+// 3) цикл идет дальше, пока срабатывает условие "i < drivers.length;", после этого останавливается.
+
+//КЛАСС
+// пояснення роботи - 2:12хв -https://www.youtube.com/watch?v=xErYDWhoVgE&feature=youtu.be
+class Heter {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName; //Каждой функции полагается своя переменнная 'this'
+  }
+  sayName() {
+    console.log(`Наш хейтер: ${this.firstName} ${this.lastName} `);
+  }
+}
+let heter1 = new Heter(`Билл`, `Гейтс`);
+heter1.sayName();
+
+let heter2 = new Heter(`Дональд`, `Дак`);
+heter2.sayName();
+
+// Обращение к елементам на html страцице
+
+//Раньше:
+// document.getElementById("heder");
+// console.log(document.getElementById("heder"));
+// console.log(typeof document.getElementById("heder"));
+// document.getElementById("heder").innerText = "Hello!";
+
+// ES6:
+// document.querySelector(".myclass");
+let findElement = document.querySelector(".myclass");
+findElement.myclass = "Hello";
+console.log(findElement);
